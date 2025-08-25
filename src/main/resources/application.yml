@@ -1,0 +1,15 @@
+server:
+  port: 8090
+
+spring:
+  application:
+    name: live-insights
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/live-insights
+    username: postgres
+    password: postgres
+  jpa:
+    hibernate.ddl-auto: update
+    show-sql: true
+    format-sql: true
