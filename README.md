@@ -14,6 +14,35 @@ Antes de rodar o projeto, verifique se as seguintes dependências estão instala
 
 ---
 
+## ▶️ Criação da Chave da API do YouTube
+
+Para utilizar a **YouTube Data API v3**, é necessário gerar uma chave de API no **Google Cloud Console**.
+
+### Passo a passo
+
+1. **Acesse o Google Cloud Console**  
+   - [console.cloud.google.com](https://console.cloud.google.com/)  
+   - Crie uma conta caso ainda não possua
+
+2. **Crie um novo projeto**  
+   - No painel inicial clique em **Criar Projeto**  
+   - Defina um nome e confirme a criação
+
+3. **Ative a API do YouTube**  
+   - Vá em **APIs e serviços > Biblioteca**  
+   - Pesquise por **YouTube Data API v3**  
+   - Clique em **Ativar**
+
+4. **Crie as credenciais da API**  
+   - Acesse **APIs e serviços > Credenciais**  
+   - Clique em **Criar credenciais > Chave de API**  
+   - Copie a chave gerada e guarde em local seguro
+
+🔗 Guia completo: [Tutorial](https://suporte.presence.com.br/portal/pt/kb/articles/criando-uma-chave-para-a-api-de-dados-do-youtube)
+
+---
+
+
 ## 🗄️ **Configuração do Banco de Dados - PostgreSQL**
 
 1. **Crie um banco de dados com o seguinte nome:**
