@@ -40,8 +40,28 @@ Para utilizar a **YouTube Data API v3**, é necessário gerar uma chave de API n
 
 🔗 Guia completo: [Tutorial](https://suporte.presence.com.br/portal/pt/kb/articles/criando-uma-chave-para-a-api-de-dados-do-youtube)
 
----
+--- 
 
+## 🤖 Criação da Chave da API do Gemini
+
+Para utilizar um client do Gemini, é necessário gerar uma chave de API no **Google Cloud Console**.
+
+### Passo a passo
+
+1. **Acesse o Google Cloud Console**  
+   - [console.cloud.google.com](https://console.cloud.google.com/)  
+   - Crie uma conta caso ainda não possua
+
+2. **Crie um novo projeto**  
+   - No painel inicial clique em **Criar Projeto**  
+   - Defina um nome e confirme a criação
+
+3. **Crie as credenciais da API**  
+   - Acesse o [**Google AI Studio**](https://aistudio.google.com/apikey)
+   - Clique em **Chaves de API > Criar chave de API**  
+   - Copie a chave gerada e guarde em local seguro
+
+---
 
 ## 🗄️ **Configuração do Banco de Dados - PostgreSQL**
 
