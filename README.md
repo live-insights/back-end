@@ -1,4 +1,4 @@
-![Auto Assign](https://github.com/live-insights/demo-repository/actions/workflows/auto-assign.yml/badge.svg)
+![Auto Assign](https://github.com/live-insights/back-end/actions/workflows/auto-assign.yml/badge.svg)
 
 # Live Insights 📊 
 
