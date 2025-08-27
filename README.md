@@ -1,5 +1,3 @@
-![Auto Assign](https://github.com/live-insights/back-end/actions/workflows/auto-assign.yml/badge.svg)
-
 # Live Insights 📊 
 
 Bem-vindo ao Live Insights WebApi!
