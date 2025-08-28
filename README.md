@@ -42,20 +42,56 @@ Para utilizar a **YouTube Data API v3**, é necessário gerar uma chave de API n
 
 --- 
 
-## 🤖 Criação da Chave da API do Gemini
+## 🤖 Criação da Chave da API do Groq
 
-Para utilizar um client do Gemini, é necessário gerar uma chave de API no **Google AI Studio**.
+Para utilizar um client do Groq, é necessário gerar uma chave de API no **Console Groq**.
 
 ### Passo a passo
 
-1. **Acesse o [Google AI Studio](https://aistudio.google.com/apikey)**  
+1. **Acesse o [Console Groq](https://console.groq.com/keys)**  
    - Faça login com sua conta Google (crie uma se ainda não possuir).
 
 2. **Crie a chave da API**  
-   - Clique em **Chaves de API > Criar chave de API**  
+   - Clique em **Create API Key**  
    - Copie a chave gerada e guarde em local seguro.
 
-> 💡 **Observação:** A criação da chave Gemini pode ser associada a projetos no Google Cloud Console ou criada de maneira independente.
+---
+
+## 📁 Configuração de ambiente
+
+É necessário um arquivo `.env` na raiz do projeto com a seguinte estrutura: 
+
+```declarative
+YOUTUBE_API_KEY="SuaChaveApiYoutube"
+LLM_PROVIDER=GROQ
+LLM_API_KEY="SuaChaveApiGroq"
+LLM_BATCH_SIZE=30
+LLM_PROMPT="Você é um analista de comentários de lives. Sua tarefa é classificar cada comentário com dois números:
+
+                  - O primeiro número representa o sentimento:
+                    0 = Negativo
+                    1 = Neutro
+                    2 = Positivo
+
+                  - O segundo número representa o tipo de interação:
+                    3 = Pergunta
+                    4 = Elogio
+                    5 = Crítica
+                    6 = Sugestão
+                    7 = Meme / Piada
+                    8 = Reclamação
+                    9 = Reação emocional
+
+                  Siga estritamente o padrão abaixo, não adicione nem remova nenhuma informação:
+                  [ID] '<comentário> →' <sentimento> <tipo>
+
+                  Exemplo:
+                  [0] 'Muito bom!' → 2 4
+
+                  Não modifique o ID nem o comentário. Apenas classifique.
+                  Caso não se encaixe exatamente em nenhuma categoria classifique com a categoria mais próxima e sempre siga o padrão fornecido."
+```
+
 ---
 
 ## 🗄️ **Configuração do Banco de Dados - PostgreSQL**

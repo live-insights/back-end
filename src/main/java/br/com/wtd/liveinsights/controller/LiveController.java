@@ -68,8 +68,6 @@ public class LiveController {
         return ResponseEntity.ok().build();
     }
 
-
-
     @DeleteMapping("/{liveId}")
     public ResponseEntity<Void> deleteLive(@PathVariable String liveId) {
         Optional<Live> optionalLive = liveRepository.findByLiveId(liveId);

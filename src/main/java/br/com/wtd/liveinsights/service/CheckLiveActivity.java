@@ -4,13 +4,11 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.cdimascio.dotenv.Dotenv;
 import okhttp3.HttpUrl;
-import okhttp3.OkHttpClient;
 
 import java.util.Objects;
 
 public class CheckLiveActivity {
     private final Dotenv dotenv = Dotenv.load();
-    private final OkHttpClient client = new OkHttpClient();
     private final String YOUTUBE_API_KEY = dotenv.get("YOUTUBE_API_KEY");
     private final ConsumeApi consume = new ConsumeApi();
 
@@ -43,7 +41,6 @@ public class CheckLiveActivity {
 
         return liveStreamingDetails.get("activeLiveChatId").asText();
     }
-
 
     public boolean isLiveActive(String liveId) {
         try {
