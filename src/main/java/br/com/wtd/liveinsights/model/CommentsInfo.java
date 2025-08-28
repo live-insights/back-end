@@ -22,6 +22,9 @@ public class CommentsInfo {
     @Column(unique = true)
     private String ytCommentId;
     @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name = "commentContent", column = @Column(name = "comment_content", columnDefinition = "TEXT"))
+    })
     private CommentsDetailsData commentsDetailsData;
     @Embedded
     private AuthorDetailsData authorDetailsData;

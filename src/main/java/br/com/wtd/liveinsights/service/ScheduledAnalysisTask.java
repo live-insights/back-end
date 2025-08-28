@@ -7,9 +7,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class ScheduledAnalysisTask {
     @Autowired
-    private LiveAnalysisManager manager;
+    private LiveAnalysisService manager;
 
-    @Scheduled(fixedRate = 10 * 1000) // 5 minutos  5 * 60 * 1000
+    @Scheduled(fixedRate = 10 * 1000) //10 seconds
+    // 5 minutos  5 * 60 * 1000
     public void runScheduledTask() {
         if (manager.isRunning()) {
             manager.executeAnalysis();
