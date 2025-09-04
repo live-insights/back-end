@@ -1,5 +1,6 @@
 package br.com.wtd.liveinsights.service;
 
+import br.com.wtd.liveinsights.service.interfaces.IConvertData;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 

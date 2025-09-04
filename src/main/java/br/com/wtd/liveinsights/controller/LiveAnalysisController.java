@@ -1,7 +1,7 @@
 package br.com.wtd.liveinsights.controller;
 
 import br.com.wtd.liveinsights.repository.UserRepository;
-import br.com.wtd.liveinsights.service.LiveAnalysisManager;
+import br.com.wtd.liveinsights.service.LiveAnalysisService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,11 +14,11 @@ import org.springframework.web.bind.annotation.*;
 public class LiveAnalysisController {
 
     @Autowired
-    private LiveAnalysisManager manager;
+    private LiveAnalysisService manager;
     @Autowired
     UserRepository userRepository;
     @Autowired
-    private LiveAnalysisManager analysisManager;
+    private LiveAnalysisService analysisManager;
 
     @PostMapping("/start/{liveId}")
     public ResponseEntity<String> start(@PathVariable String liveId,

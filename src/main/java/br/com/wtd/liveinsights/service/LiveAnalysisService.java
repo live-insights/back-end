@@ -4,6 +4,7 @@ import br.com.wtd.liveinsights.model.*;
 import br.com.wtd.liveinsights.repository.CommentsRepository;
 import br.com.wtd.liveinsights.repository.LiveRepository;
 import br.com.wtd.liveinsights.repository.UserRepository;
+import br.com.wtd.liveinsights.service.interfaces.ILiveAnalysisService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,40 +12,37 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class LiveAnalysisManager {
-    private Long userId;
-    private String liveId;
+public class LiveAnalysisService implements ILiveAnalysisService {
+
     private String activeChatId;
+    private String currentLiveId;
+
+    private User user;
+    private Live live;
+    private int emptyCount = 0;
 
     @Autowired
     private UserRepository userRepository;
 
     @Autowired
     private LiveRepository liveRepository;
+
     private final CheckLiveActivity checkLive = new CheckLiveActivity();
     private final FetchLiveComments fetchLiveComments = new FetchLiveComments();
-    private final CommentsRepository repository;
     private final ConvertData converter = new ConvertData();
-    private final LLMAnalysis llmAnalysis;
+    private final CommentsRepository repository;
+    private final LLMService llmService;
 
-    private String currentLiveId;
-
-    private User user;
-    private Live live;
-    private boolean running;
-    private int emptyCount = 0;
-
+    @Autowired
+    public LiveAnalysisService(CommentsRepository repository, LLMService llmService) {
+        this.repository = repository;
+        this.llmService = llmService;
+    }
 
     public void configureAnalysis(Long userId, String liveId) {
         this.user = userRepository.findById(userId).orElseThrow();
         this.live = liveRepository.findByLiveIdAndUserId(liveId, userId)
                 .orElseThrow(() -> new RuntimeException("Live não encontrada para este usuário"));
-    }
-
-    @Autowired
-    public LiveAnalysisManager(CommentsRepository repository, LLMAnalysis llmAnalysis) {
-        this.repository = repository;
-        this.llmAnalysis = llmAnalysis;
     }
 
     public boolean startAnalysis(String liveID) {
@@ -61,8 +59,6 @@ public class LiveAnalysisManager {
             return false;
         }
     }
-
-
 
     public void executeAnalysis() {
         if (activeChatId == null || user == null || live == null) return;
@@ -81,8 +77,6 @@ public class LiveAnalysisManager {
 
             if (emptyCount >= 3) {
                 emptyCount = 0;
-                boolean ativo = checkLive.isLiveActive(currentLiveId);
-                System.out.println("A live está ativa? " + ativo);
                 boolean stillActive = checkLive.isLiveActive(currentLiveId);
                 System.out.println("Verificando se a live ainda está ativa... Resultado: " + stillActive);
 
@@ -99,7 +93,6 @@ public class LiveAnalysisManager {
         }
     }
 
-
     private void processComments(GeneralInfoData generalInfoData) {
         List<CommentsInfo> allComments = new ArrayList<>();
 
@@ -110,7 +103,7 @@ public class LiveAnalysisManager {
             allComments.add(comment);
         }
 
-        llmAnalysis.analyzeCommentsBatch(allComments);
+        llmService.analyzeCommentsBatch(allComments);
     }
 
     private CommentsInfo getCommentsInfo(CommentsInfoData data) {
@@ -131,7 +124,6 @@ public class LiveAnalysisManager {
         comment.setLiveVideoId(currentLiveId);
         return comment;
     }
-
 
     public void stopAnalysis() {
         this.activeChatId = null;

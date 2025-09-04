@@ -2,14 +2,17 @@ package br.com.wtd.liveinsights.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
+import jakarta.persistence.Lob;
 
 import java.sql.Timestamp;
+
 @Embeddable
 public class CommentsDetails {
     private String commentLiveId;
     private Timestamp commentTimeStamp;
 
-    @Column(length = 1000)
+    @Lob
+    @Column(columnDefinition = "TEXT")
     private String commentContent;
 
     public CommentsDetails() {}
