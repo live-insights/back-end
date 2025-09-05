@@ -81,6 +81,7 @@ LLM_PROMPT="Você é um analista de comentários de lives. Sua tarefa é classif
                     7 = Meme / Piada
                     8 = Reclamação
                     9 = Reação emocional
+                    10 = Ofensivo / Preconceituoso
 
                   Siga estritamente o padrão abaixo, não adicione nem remova nenhuma informação:
                   [ID] '<comentário> →' <sentimento> <tipo>
