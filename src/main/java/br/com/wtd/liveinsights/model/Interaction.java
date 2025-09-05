@@ -7,7 +7,8 @@ public enum Interaction {
     SUGESTAO(6),
     PIADA(7),
     RECLAMACAO(8),
-    REACAO_EMOCIONAL(9);
+    REACAO_EMOCIONAL(9),
+    OFENSIVO_PRECONCEITUOSO(10);
 
     private final int code;
 
