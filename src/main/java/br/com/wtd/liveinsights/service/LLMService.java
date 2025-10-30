@@ -98,7 +98,7 @@ public class LLMService implements ILLMService {
 
         System.out.println("Resposta bruta do LLM:\n" + content);
 
-        Pattern pattern = Pattern.compile("^\\[(\\d+)]\\s*\"?(.*?)\"?\\s*→\\s*(\\d)\\s+(\\d)$", Pattern.MULTILINE);
+        Pattern pattern = Pattern.compile("^\\[(\\d+)]\\s*\"?(.*?)\"?\\s*→\\s*(\\d+)\\s+(\\d+)$", Pattern.MULTILINE);
         Matcher matcher = pattern.matcher(content);
 
         while (matcher.find()) {
